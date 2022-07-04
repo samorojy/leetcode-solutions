@@ -5,13 +5,13 @@ class Solution {
         val evenIndicesList = nums.filterIndexed { index, item -> 
             index % 2 == 0}.sorted()
         
-        // val oddIterator = oddIndicesList.iterator()
-        // val evenIterator = evenIndicesList.iterator()
+         val oddIterator = oddIndicesList.iterator()
+         val evenIterator = evenIndicesList.iterator()
         
         val result = IntArray(nums.size)
         
         for (i in nums.indices) {
-            result[i] = if (i % 2 == 0) evenIndicesList[i / 2] else oddIndicesList[i / 2]
+            result[i] = if (i % 2 == 0) evenIterator.next() else oddIterator.next()
         }
         
         // while (oddIterator.hasNext() || evenIterator.hasNext()) {
