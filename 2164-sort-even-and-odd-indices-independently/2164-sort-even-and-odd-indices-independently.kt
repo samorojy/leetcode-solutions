@@ -9,17 +9,9 @@ class Solution {
          val evenIterator = evenIndicesList.iterator()
         
         val result = IntArray(nums.size)
-        
         for (i in nums.indices) {
             result[i] = if (i % 2 == 0) evenIterator.next() else oddIterator.next()
         }
-        
-        // while (oddIterator.hasNext() || evenIterator.hasNext()) {
-        //     if(evenIterator.hasNext())
-        //     result.add(evenIterator.next())
-        //     if(oddIterator.hasNext())
-        //     result.add(oddIterator.next())
-        // }
         
         return result
     }
