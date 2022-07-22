@@ -10,8 +10,6 @@ class Solution {
             for (c in i..(s1.length + i - 1)) {
                 s2Map[s2[c]] = s2Map.getOrDefault(s2[c], 0) + 1
             }
-            println("->>${s2Map.size}")
-            print(i)
             if (isSimilar(s1Map, s2Map)) return true
         }
         return false
