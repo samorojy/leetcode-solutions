@@ -6,9 +6,7 @@ class Solution {
         if (alphanumeric.isEmpty())
             return true
         for (i in 0..alphanumeric.length / 2) {
-            val start = alphanumeric[i]
-            val end = alphanumeric[alphanumeric.length - i - 1]
-            if (start != end)
+            if (alphanumeric[i] != alphanumeric[alphanumeric.length - i - 1])
                 return false
         }
         return true
