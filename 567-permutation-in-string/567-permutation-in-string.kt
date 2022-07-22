@@ -1,25 +1,26 @@
 class Solution {
     fun checkInclusion(s1: String, s2: String): Boolean {
-        val s1Map = mutableMapOf<Char, Int>()
-        for (c in s1) {
-            s1Map[c] = s1Map.getOrDefault(c, 0) + 1
+        
+        if (s1.length > s2.length) return false
+        val s1map = IntArray(26)
+        val s2map = IntArray(26)
+        
+        for (i in s1.indices) {
+            s1map[s1[i] - 'a']++
+            s2map[s2[i] - 'a']++
         }
         
-        for (i in 0..(s2.length - s1.length)) {
-            val s2Map = mutableMapOf<Char, Int>()
-            for (c in i..(s1.length + i - 1)) {
-                s2Map[s2[c]] = s2Map.getOrDefault(s2[c], 0) + 1
-            }
-            if (isSimilar(s1Map, s2Map)) return true
+        for (i in 0 until s2.length - s1.length) {
+            if (isSimilar(s1map, s2map)) return true
+            s2map[s2[i + s1.length] - 'a']++
+            s2map[s2[i] - 'a']--
         }
-        return false
+        return isSimilar(s1map, s2map)
     }
-    
-    fun isSimilar(firstMap: Map<Char, Int>, secondMap: Map<Char, Int>): Boolean {
-        for ((key, value) in firstMap) {
-                if (secondMap[key] != value) {
-                    return false
-                }
+
+    private fun isSimilar(s1map: IntArray, s2map: IntArray): Boolean {
+        for (i in 0..25) {
+            if (s1map[i] != s2map[i]) return false
         }
         return true
     }
