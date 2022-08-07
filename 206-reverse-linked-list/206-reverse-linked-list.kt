@@ -11,7 +11,7 @@ class Solution {
     fun reverseList(head: ListNode?): ListNode? {
         var previous: ListNode? = null
         var current: ListNode? = head
-        while(current != null) {
+        while (current != null) {
             current.next = previous.also { previous = current?.next }
             current = previous.also { previous = current }
         }
